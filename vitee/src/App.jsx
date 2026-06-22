@@ -33,13 +33,15 @@ function App() {
   }
 
   return (
-    <div className='card'>
-      <div className='content'>
-        <Input task={task} settask={settask} />
-        <SaveButton savetask={savetask} />
+    <div   className=" flex flex-col bg-[url('cherry.jpg')] bg-cover bg-no-repeat  p-5 w-80  transition-transform duration-300 hover:scale-105 hover:shadow-lg" >
 
-        <h1>TO do's</h1>
-        <List deleteItem={deleteItem} edititem={edititem} list={list} />
+      <div className='flex flex-col gap-4 ' >
+        <div className='flex gap-6' >
+        <Input className="  focus:outline-none transition-transform focus:scale-105 focus:shadow-xl p-0.5" task={task} settask={settask} />
+        <SaveButton className="bg-green-500 text-white   transition-colors duration-300   hover:bg-green-700 h-8 transition-transform hover:scale-105 hover:shadow-lg " savetask={savetask} />
+</div>
+        <h1 className='font-bold' >To do's</h1>
+        <List className="  transition-transform focus:scale-105cd p-1 bg-blue-100 flex gap-4 " className2="bg-red-500 text-white px-2 rounded transition-transform hover:scale-105 hover:shadow-lg transition-colors duration-300   hover:bg-red-900 " deleteItem={deleteItem} edititem={edititem} list={list} />
       </div>
     </div>
   )

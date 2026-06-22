@@ -1,10 +1,10 @@
 import React from 'react'
 import Input from './Input.jsx'
 
-const SaveButton = ({savetask}) => {
+const SaveButton = ({savetask,className}) => {
    
   return (
-    <button onClick={savetask}>Save</button>
+    <button className={`px-2 py-1 mt-5 rounded text-centre ${className}`} onClick={savetask}>Save</button>
   )
 }
 
