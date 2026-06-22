@@ -2,15 +2,33 @@ import { useState } from 'react'
 import Input from './Input.jsx'
 import List from './List.jsx'
 import SaveButton from './SaveButton.jsx'
-import './App.css'
 
 function App() {
   const [task, settask] = useState("");
   const [list, setlist] = useState([]);
+  const [editIndex, setedit] = useState(null);
+
+  function deleteItem(index) {
+    setlist(prev => prev.filter((_, i) => i !== index));
+  }
+
+  function edititem(index) {
+    settask(list[index]);
+    setedit(index);
+  }
 
   function savetask() {
     if (task.trim() === '') return;
-    setlist(prev => [...prev, task]);
+
+    if (editIndex !== null) {
+      const updated = [...list];
+      updated[editIndex] = task;
+      setlist(updated);
+      setedit(null);
+    } else {
+      setlist(prev => [...prev, task]);
+    }
+
     settask("");
   }
 
@@ -21,8 +39,7 @@ function App() {
         <SaveButton savetask={savetask} />
 
         <h1>TO do's</h1>
-
-        <List list={list} />
+        <List deleteItem={deleteItem} edititem={edititem} list={list} />
       </div>
     </div>
   )
